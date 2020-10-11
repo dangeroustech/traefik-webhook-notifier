@@ -1,0 +1,22 @@
+version: "3.3"
+
+services:
+  traefik:
+    container_name: traefik
+    image: traefik:v2.3
+    command:
+      - --log.level=DEBUG
+      # Entrypoints
+      - --entrypoints.http.address=:8080
+      # Provider Info
+      - --providers.docker
+    labels:
+      - "traefik.enable=true"
+    ports:
+      - "8080:8080"
+    volumes:
+        - "/var/run/docker.sock:/var/run/docker.sock"
+        - "certs:/letsencrypt"
+    restart: unless-stopped
+    networks:
+      - proxy

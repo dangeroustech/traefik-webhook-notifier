@@ -1,0 +1,9 @@
+displayName: Webhook Notifier
+type: middleware
+import: github.com/dangerous-tech/traefik-webhook-plugin
+summary: A plugin for Traefik 2.3 to support triggering a webhook when an endpoint is accessed
+
+# Traefik Pilot will try to execute the plugin with the data you provide as part of its startup validity tests.
+testData:
+  webhookNotifier:
+    - http://localhost
